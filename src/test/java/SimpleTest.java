@@ -12,7 +12,7 @@ public class SimpleTest {
     }
 
     @AfterClass
-    public void tearDownClass(){
+    public void tearDown(){
         driver.quit();
     }
 
