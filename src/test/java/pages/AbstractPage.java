@@ -1,11 +1,10 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.WebDriverManager;
 
@@ -62,7 +61,13 @@ public class AbstractPage {
 
     protected void type(By locator, String text) throws InterruptedException{
         waitForElementPresent(locator);
-        getDriver().findElement(locator).sendKeys(text);
+        WebElement element = getDriver().findElement(locator);
+        element.sendKeys(Keys.chord(Keys.CONTROL, "a"), text);
+    }
+
+    protected void selectFromDropdown(By locator, String value){
+        Select dropdown = new Select(getDriver().findElement(locator));
+        dropdown.selectByValue(value);
     }
 
     public void zoomPage(double zoomIndex){
