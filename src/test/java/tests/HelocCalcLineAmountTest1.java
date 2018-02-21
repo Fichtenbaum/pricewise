@@ -11,7 +11,6 @@ import java.util.Map;
 public class HelocCalcLineAmountTest1 {
     private String baseUrl = "https://uatpricewise.informars.com/?#/login";
     private CommonMenuPage commonPage = new CommonMenuPage();
-    private SoftAssert softAssert = new SoftAssert();
     LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
     AnalyticsPage analyticsPage = new AnalyticsPage();
@@ -30,7 +29,7 @@ public class HelocCalcLineAmountTest1 {
     public void helocRoaCalcLineAmountTest() throws InterruptedException {
         analyticsPage.openHelocRoaCalcPage();
         roaCalcPage.fillInFormHelocLineAmount1();
-
+        SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(roaCalcPage.getGrossInterestIncomeExpected(),roaInputValues.get("grossInterestIncomeActual"),"Gross Interest Income isn't equal to expected result");
         softAssert.assertEquals(roaCalcPage.getoriginationExpensesExpected(),roaInputValues.get("originationExpensesActual"),"Origination Expenses isn't equal to expected result");
         softAssert.assertEquals(roaCalcPage.getoriginationFeesExpected(),roaInputValues.get("originationFeesActual"),"Origination Fees isn't equal to expected result");

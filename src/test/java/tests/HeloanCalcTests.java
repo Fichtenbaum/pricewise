@@ -11,12 +11,11 @@ import java.util.Map;
 public class HeloanCalcTests {
     private String baseUrl = "https://uatpricewise.informars.com/?#/login";
     private CommonMenuPage commonPage = new CommonMenuPage();
-    private SoftAssert softAssert = new SoftAssert();
     LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
     AnalyticsPage analyticsPage = new AnalyticsPage();
     RoaCalcPage roaCalcPage = new RoaCalcPage();
-    Map<String, Double> roaInputValues = roaCalcPage.getInputValues();
+    Map<String, Double> roaInputValues = roaCalcPage.getInputValuesHeloan();
 
     @BeforeTest
     public void precondition() throws InterruptedException {
@@ -28,6 +27,7 @@ public class HeloanCalcTests {
 
     @Test
     public void heloanRoaCalcTest() throws InterruptedException {
+        SoftAssert softAssert = new SoftAssert();
         analyticsPage.openHeloanRoaCalcPage();
         roaCalcPage.fillInFormHeloan();
         softAssert.assertEquals(roaCalcPage.getTotalLine(), roaInputValues.get("totalLineInput"), "Total Line isn't equal to input value");
@@ -64,7 +64,7 @@ public class HeloanCalcTests {
         softAssert.assertEquals(roaCalcPage.getpreTaxROAActual(),roaCalcPage.getpreTaxROAExpected(),"Pre-Tax ROA isn't equal to expected result");
         softAssert.assertEquals(roaCalcPage.getafterTaxROAActual(),roaCalcPage.getafterTaxROAExpected(),"After-Tax ROA isn't equal to expected result");
 
-        //softAssert.assertAll();
+        softAssert.assertAll();
     }
 
     @AfterSuite

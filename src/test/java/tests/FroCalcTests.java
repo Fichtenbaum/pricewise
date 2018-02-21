@@ -11,12 +11,11 @@ import java.util.Map;
 public class FroCalcTests {
     private String baseUrl = "https://uatpricewise.informars.com/?#/login";
     private CommonMenuPage commonPage = new CommonMenuPage();
-    private SoftAssert softAssert = new SoftAssert();
     LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
     AnalyticsPage analyticsPage = new AnalyticsPage();
     RoaCalcPage roaCalcPage = new RoaCalcPage();
-    Map<String, Double> roaInputValues = roaCalcPage.getInputValues();
+    Map<String, Double> roaInputValues = roaCalcPage.getInputValuesFro();
 
     @BeforeTest
     public void precondition() throws InterruptedException {
@@ -28,10 +27,11 @@ public class FroCalcTests {
 
     @Test
     public void froRoaCalcTest() throws InterruptedException {
+        SoftAssert softAssert = new SoftAssert();
         analyticsPage.openFroRoaCalcPage();
         roaCalcPage.fillInFormFro();
         softAssert.assertEquals(roaCalcPage.getTotalLine(), roaInputValues.get("totalLineInput"), "Total Line isn't equal to input value");
-        softAssert.assertEquals(roaCalcPage.getBaseRate(), roaInputValues.get("baseRateInput"),"Base Rate isn't equal to input value");
+        softAssert.assertEquals(roaCalcPage.getBaseRateActual(), roaInputValues.get("baseRateInput"),"Base Rate isn't equal to input value");
         softAssert.assertEquals(roaCalcPage.getRelationshipDiscount(), roaInputValues.get("relationshipDiscountInput"),"Relationship Discount isn't equal to input value");
         softAssert.assertEquals(roaCalcPage.getAutoDebitDiscount(), roaInputValues.get("autoDebitDiscountInput"),"Auto Debit Discount isn't equal to input value");
         softAssert.assertEquals(roaCalcPage.getExpectedLife(), roaInputValues.get("expectedLifeInput"),"Expected Life isn't equal to input value");
@@ -42,7 +42,7 @@ public class FroCalcTests {
         softAssert.assertEquals(roaCalcPage.getLossProvisionYear(), roaInputValues.get("lossProvisionYearInput"),"Loss Provision Year isn't equal to input value");
         softAssert.assertEquals(roaCalcPage.getOriginationClosing(), roaInputValues.get("originationClosingInput"),"Origination Closing isn't equal to input value");
         softAssert.assertEquals(roaCalcPage.getOtherOriginationClosing(), roaInputValues.get("otherOriginationClosingInput"),"Other Origination Closing isn't equal to input value");
-        //softAssert.assertEquals(roaCalcPage.getAnnual(), roaInputValues.get("annualInput"),"Annual isn't equal to input value");
+        softAssert.assertEquals(roaCalcPage.getannualFeesActual(), roaCalcPage.getannualFeesExpected(),"Annual isn't equal to input value");
         softAssert.assertEquals(roaCalcPage.getGrossInterestIncomeActual(),roaCalcPage.getGrossInterestIncomeExpected(),"Gross Interest Income isn't equal to expected result");
         softAssert.assertEquals(roaCalcPage.getoriginationExpensesActual(),roaCalcPage.getoriginationExpensesExpected(),"Origination Expenses isn't equal to expected result");
         softAssert.assertEquals(roaCalcPage.getoriginationFeesActual(),roaCalcPage.getoriginationFeesExpected(),"Origination Fees isn't equal to expected result");
@@ -64,7 +64,8 @@ public class FroCalcTests {
         softAssert.assertEquals(roaCalcPage.getpreTaxROAActual(),roaCalcPage.getpreTaxROAExpected(),"Pre-Tax ROA isn't equal to expected result");
         softAssert.assertEquals(roaCalcPage.getafterTaxROAActual(),roaCalcPage.getafterTaxROAExpected(),"After-Tax ROA isn't equal to expected result");
 
-        //softAssert.assertAll();
+
+        softAssert.assertAll();
     }
 
     @AfterSuite

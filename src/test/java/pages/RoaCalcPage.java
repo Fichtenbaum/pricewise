@@ -125,7 +125,8 @@ public class RoaCalcPage extends AbstractPage{
             ,netIncomeActual = By.xpath("//th[text()='Net Income']/../th[2]")
             ,averageBalanceActual = By.xpath("//td[text()='Average Balance']/../td[2]")
             ,preTaxROAActual = By.xpath("//td[text()='Pre-Tax ROA']/../td[2]")
-            ,afterTaxROAActual = By.xpath("//td[text()='After-Tax ROA']/../td[2]");
+            ,afterTaxROAActual = By.xpath("//td[text()='After-Tax ROA']/../td[2]")
+            ,baseRateActual = By.xpath("//td[text()=" + baseRate + "]/../td[2]");
 
     public Map<String, Double> getInputValues() {
         Map<String, Double> inputValues = new HashMap<String, Double>();
@@ -214,7 +215,7 @@ public class RoaCalcPage extends AbstractPage{
     public Map<String, Double> getInputValuesFro() {
         Map<String, Double> inputValues = new HashMap<String, Double>();
         inputValues.put("totalLineInput", (double) 250000);
-        //inputValues.put("baseRateInput", 4.49);
+        inputValues.put("baseRateInput", 6.240);
         inputValues.put("relationshipDiscountInput", (double) 0);
         inputValues.put("autoDebitDiscountInput", (double) 0);
         inputValues.put("expectedLifeInput", (double) 84);
@@ -231,7 +232,7 @@ public class RoaCalcPage extends AbstractPage{
     public Map<String, Double> getInputValuesHeloan() {
         Map<String, Double> inputValues = new HashMap<String, Double>();
         inputValues.put("totalLineInput", (double) 250000);
-        //inputValues.put("baseRateInput", 4.00);
+        inputValues.put("baseRateInput", 3.750);
         inputValues.put("relationshipDiscountInput", (double) 0);
         inputValues.put("autoDebitDiscountInput", 0.250);
         inputValues.put("expectedLifeInput", (double) 60);
@@ -244,6 +245,7 @@ public class RoaCalcPage extends AbstractPage{
         inputValues.put("otherOriginationClosingInput", (double) 0);
         return inputValues;
     }
+
 
     public void fillInForm() throws InterruptedException {
         Map<String, Double> inputValues = getInputValues();
@@ -280,7 +282,6 @@ public class RoaCalcPage extends AbstractPage{
         Map<String, Double> inputValues = getInputValuesHelocLineAmount1();
         type(totalLineInput, inputValues.get("totalLineInput").toString());
         type(baseRateInput, "11.05");
-        //type(baseRateInput, inputValues.get("baseRateInput").toString());
         type(relationshipDiscountInput, inputValues.get("relationshipDiscountInput").toString());
         type(autoDebitDiscountInput, inputValues.get("autoDebitDiscountInput").toString());
         type(expectedLifeInput, inputValues.get("expectedLifeInput").toString());
@@ -315,7 +316,7 @@ public class RoaCalcPage extends AbstractPage{
     public void fillInFormFro() throws InterruptedException {
         Map<String, Double> inputValues = getInputValuesFro();
         type(totalLineInput, inputValues.get("totalLineInput").toString());
-        //type(baseRateInput, inputValues.get("baseRateInput").toString());
+        type(baseRateInput, "6.240");
         type(relationshipDiscountInput, inputValues.get("relationshipDiscountInput").toString());
         type(autoDebitDiscountInput, inputValues.get("autoDebitDiscountInput").toString());
         type(expectedLifeInput, inputValues.get("expectedLifeInput").toString());
@@ -333,7 +334,7 @@ public class RoaCalcPage extends AbstractPage{
         public void fillInFormHeloan() throws InterruptedException {
         Map<String, Double> inputValues = getInputValuesHeloan();
         type(totalLineInput, inputValues.get("totalLineInput").toString());
-        //type(baseRateInput, inputValues.get("baseRateInput").toString());
+        type(baseRateInput, "3.750");
         type(relationshipDiscountInput, inputValues.get("relationshipDiscountInput").toString());
         type(autoDebitDiscountInput, inputValues.get("autoDebitDiscountInput").toString());
         type(expectedLifeInput, inputValues.get("expectedLifeInput").toString());
@@ -348,11 +349,14 @@ public class RoaCalcPage extends AbstractPage{
         //type(maintainceFeesInput, inputValues.get("maintainceFeesInput").toString());
     }
 
+
     public Double getTotalLine(){
         return Double.parseDouble(getInputText(totalLineInput));
     }
 
     public Double getBaseRate(){ return Double.parseDouble(getInputText(baseRateInput)); }
+
+    public Double getBaseRateActual(){ return Double.parseDouble(getInputText(baseRateInput)); }
 
     public Double getRelationshipDiscount(){
         return Double.parseDouble(getInputText(relationshipDiscountInput));

@@ -1,6 +1,8 @@
 package tests;
 
-import org.testng.annotations.*;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeTest;
 import org.testng.asserts.SoftAssert;
 import pages.*;
 
@@ -9,7 +11,6 @@ import java.util.Map;
 public class HelocCalcTests {
     private String baseUrl = "https://uatpricewise.informars.com/?#/login";
     private CommonMenuPage commonPage = new CommonMenuPage();
-    private SoftAssert softAssert = new SoftAssert();
     LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
     AnalyticsPage analyticsPage = new AnalyticsPage();
@@ -26,6 +27,7 @@ public class HelocCalcTests {
 
     @Test
     public void helocRoaCalcTest() throws InterruptedException {
+        SoftAssert softAssert = new SoftAssert();
         analyticsPage.openHelocRoaCalcPage();
         roaCalcPage.fillInForm();
         softAssert.assertEquals(roaCalcPage.getTotalLine(), roaInputValues.get("totalLineInput"), "Total Line isn't equal to input value");

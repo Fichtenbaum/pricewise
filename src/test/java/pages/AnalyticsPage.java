@@ -60,7 +60,7 @@ public class AnalyticsPage extends CommonMenuPage {
         click(topthitdLinkPriceRanges);
         click(finishedLinkCompetitiveAnalytics);
         click(pricewiseButton);
-        type(rateInputFroPI,"5.990");
+        type(rateInputFroPI,"6.240");
         click(roacalcButtonFroPI);
     }
 
@@ -79,7 +79,7 @@ public class AnalyticsPage extends CommonMenuPage {
         click(topthitdLinkPriceRanges);
         click(finishedLinkCompetitiveAnalytics);
         click(pricewiseButton);
-        type(rateInputHeloanPI,"4.000");
+        type(rateInputHeloanPI,"3.750");
         click(roacalcButtonHeloanPI);
 
 
