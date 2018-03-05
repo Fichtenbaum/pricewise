@@ -198,14 +198,14 @@ public class RoaCalcPage extends AbstractPage{
         inputValues.put("originationExpensesActual", numberFormat.format((double) 5000));
         inputValues.put("originationFeesActual", numberFormat.format((double) 1250));
         inputValues.put("interestIncomeActual", numberFormat.format((double) 204750));
-        inputValues.put("interestExpenseSource", numberFormat.format((double) 114500));
+        inputValues.put("interestExpenseSource", numberFormat.format((double) 114000));
         inputValues.put("sourceRateActual", numberFormat.format(0.02));
-        inputValues.put("netInterestIncomeActual", numberFormat.format((double) 90250));
+        inputValues.put("netInterestIncomeActual", numberFormat.format((double) 90750));
         inputValues.put("servicingExpensesActual", numberFormat.format((double) 2000));
         inputValues.put("annualFeesActual", numberFormat.format((double) 1000));
         inputValues.put("nonInterestExpenseActual", numberFormat.format((double) 1000));
         inputValues.put("lossProvisionActual", numberFormat.format((double) 1250000));
-        //inputValues.put("creditInsuranceActual", 3937.44);
+        //inputValues.put("creditInsuranceActual", numberFormat.format(3937.44));
         //inputValues.put("pretaxIncomeActual", -1132812.56);
         inputValues.put("averageBalanceActual", numberFormat.format((double) 2500000));
         inputValues.put("preTaxROAActual", numberFormat.format(-0.46));
@@ -238,7 +238,7 @@ public class RoaCalcPage extends AbstractPage{
         inputValues.put("expectedLifeInput", (double) 60);
         inputValues.put("paymentsYearInput", (double) 12);
         inputValues.put("prepaySpeedInput", (double) 15);
-        inputValues.put("originationCostInput", 1246.37);
+        inputValues.put("originationCostInput", 1246.27);
         inputValues.put("servicingCostInput", (double) 105);
         inputValues.put("originationClosingInput", (double)0);
         inputValues.put("lossProvisionYearInput", 0.41);

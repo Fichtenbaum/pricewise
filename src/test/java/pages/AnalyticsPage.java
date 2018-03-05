@@ -28,6 +28,7 @@ public class AnalyticsPage extends CommonMenuPage {
             ,roacalcButtonHeloanPI = By.xpath("//*[text()='HELOAN: Owner Occupied, 1st Lien, Fixed, 0-60% LTV, $10,000-$250,000, P+I, 60 Months, Bank Paid']/..//button[@class='btn btn-default hidePrint'][2]")
             ,firstCURate = By.xpath("//div[@class=\"main-analytics-tables\"]//tbody/tr[1]/td[3]");
 
+
     public void openHelocRoaCalcPage() throws InterruptedException {
         click(helocLink);
         click(allLinkOwnerOccupied);
