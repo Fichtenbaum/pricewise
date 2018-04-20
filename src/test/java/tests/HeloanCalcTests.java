@@ -20,7 +20,7 @@ public class HeloanCalcTests {
     @BeforeTest
     public void precondition() throws InterruptedException {
         loginPage.openUrl(baseUrl);
-        loginPage.logIn("HELOAN_Auto", "Macu1!");
+        loginPage.logIn("HeloanAuto", "Macu1!");
         homePage.zoomPage(0.8);
         homePage.openAnalyticsPage();
     }
